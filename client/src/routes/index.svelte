@@ -9,6 +9,10 @@
         id
         name
         username
+        email
+        posts {
+            title
+        }
       }
     }
   `;
@@ -37,7 +41,13 @@
     {:else}
       <ul>
         {#each res.data.users as user}
-          <li>{user.id} / {user.name} / {user.username}</li>
+          <li>{user.id} / {user.name} / {user.username} / {user.email}
+            <ul>
+              {#each user.posts as post}
+                <li>{post.title}</li>
+              {/each}
+            </ul>
+          </li>
         {/each}
       </ul>
     {/if}

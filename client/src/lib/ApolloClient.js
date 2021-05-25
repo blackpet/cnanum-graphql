@@ -1,5 +1,5 @@
 import { ApolloClient, HttpLink } from '@apollo/client/core';
-import { InMemoryCache } from '@apollo/client/cache/cache.cjs.js';
+import { InMemoryCache } from '@apollo/client/cache';
 
 class Client {
   constructor() {

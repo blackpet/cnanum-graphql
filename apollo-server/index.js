@@ -9,6 +9,9 @@ const typeDefs = gql`
       "사용자"
       user(id: Int): User
       
+      "사용자 + 최근 앨범 정보"
+      userRecentAlbums(id: Int, search: String): [Album]
+      
       "전체 게시물 목록"
       posts: [Post]
   }
@@ -27,6 +30,14 @@ const typeDefs = gql`
       address: Address
       "작성한 게시물 목록"
       posts: [Post]
+      "사용자이 앨범"
+      albums: [Album]
+  }
+  
+  type Album {
+      userId: String
+      id: Int
+      title: String
   }
   
   "주소"
@@ -73,9 +84,11 @@ const resolvers = {
     users: () => database.users,
     user: (_, {id}) => database.users.find(u => u.id === id),
     posts: () => database.posts,
+    userRecentAlbums: (_, {id, search}) => database.albums.filter(ab => ab.userId === id && ab.title.startsWith('search')),
   },
   User: {
     posts: ({id: userId}) => database.posts.filter(p => p.userId === userId),
+    albums: ({id: userId}) => database.albums.filter(a => a.userId === userId),
   },
   Post: {
     user: ({userId}) => database.users.find(u => u.id === userId),
