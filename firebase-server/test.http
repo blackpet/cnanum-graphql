@@ -1,0 +1,11 @@
+POST http://localhost:4009/setMessage
+Content-Type: application/json
+
+{
+  "id": 122,
+  "name": "hello",
+  "age": 999,
+  "address": "화이트하우스"
+}
+
+###

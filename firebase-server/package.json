@@ -6,7 +6,8 @@
   "scripts": {
     "build": "tsc",
     "dev": "nodemon --exec ts-node src/index.ts",
-    "start": "npm run build && nodemon --exec node build/index.js"
+    "start": "npm run build && nodemon --exec node build/index.js",
+    "init": "ts-node src/init.ts"
   },
   "keywords": [],
   "author": "",

@@ -34,7 +34,7 @@
   {:then res}
     <ul>
       {#each res.messages as item}
-        <li>{item.message}</li>
+        <li>{item.id} / {item.name}</li>
       {:else}
         <li>NO_MESSAGES</li>
       {/each}
